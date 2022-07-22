@@ -8,24 +8,42 @@
             >
                 <v-list-item v-for="(item, idx) in list" :key="idx">
                     <template v-slot:default="{ active }">
-                        <v-list-item-avatar color="grey darken-1"></v-list-item-avatar>
-                    
+                        <v-list-item-avatar color="grey darken-1">
+                        </v-list-item-avatar>
+                        
                         <v-list-item-content>
                             <v-list-item-title>
-                                {{idx+1 }}
+                                {{item.name }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Id :  {{item.id }} * 
-                                Photo :  {{item.photo }} * 
-                                Name :  {{item.name }} * 
-                                Energy :  {{item.energy }} * 
-                                Appearance :  {{item.appearance }} * 
-                                Weight :  {{item.weight }} * 
-                                Address :  {{item.address }} * 
-                                Status :  {{item.status }} * 
-                                Type :  {{item.type }} * 
-                                IllnessHistory :  {{item.illnessHistory }} * 
-                                Test123 :  {{item.test123 }} * 
+                                Photo :  {{item.photo }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Name :  {{item.name }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Energy :  {{item.energy }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Appearance :  {{item.appearance }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Weight :  {{item.weight }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Address :  {{item.address }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Status :  {{item.status }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Type :  {{item.type }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                IllnessHistory :  {{item.illnessHistory }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Test123 :  {{item.test123 }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
@@ -59,11 +77,11 @@
                 me.list = temp.data._embedded.pets;
             }
 
-            if(me.value && typeof me.value == "object") {
+            if(me.value && typeof me.value == "object" && Object.values(me.value)[0]) {
                 var id = Object.values(me.value)[0];
-                temp = await axios.get(axios.fixUrl('/pets/' + id))
-                if(temp.data) {
-                    var val = temp.data
+                var tmpValue = await axios.get(axios.fixUrl('/pets/' + id))
+                if(tmpValue.data) {
+                    var val = tmpValue.data
                     me.list.forEach(function(item, idx) {
                         if(item.name == val.name) {
                             me.selected = idx
@@ -105,5 +123,4 @@
         },
     };
 </script>
-
 

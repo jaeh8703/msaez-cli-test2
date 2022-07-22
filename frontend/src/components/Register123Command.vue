@@ -2,7 +2,7 @@
 
     <v-card outlined>
         <v-card-title>
-            Register
+            Register123
         </v-card-title>
 
         <v-card-text>
@@ -13,9 +13,9 @@
             <v-btn
                     color="deep-purple lighten-2"
                     text
-                    @click="register"
+                    @click="register123"
             >
-                Register
+                Register123
             </v-btn>
             
             <v-btn
@@ -33,7 +33,7 @@
 <script>
    
     export default {
-        name: 'RegisterCommand',
+        name: 'Register123Command',
         components:{},
         props: {},
         data: () => ({
@@ -45,8 +45,8 @@
         watch: {
         },
         methods: {
-            register() {
-                this.$emit('register', this.value);
+            register123() {
+                this.$emit('register123', this.value);
             },
             close() {
                 this.$emit('closeDialog');

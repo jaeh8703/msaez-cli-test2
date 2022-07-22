@@ -55,6 +55,10 @@ public class Pet {
     }
 
     public void feed() {
+        //
+    }
+
+    public void feed123() {
         Overweighted overweighted = new Overweighted(this);
         overweighted.publishAfterCommit();
 

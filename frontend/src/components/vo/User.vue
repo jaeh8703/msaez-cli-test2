@@ -30,7 +30,7 @@
 
         <v-card-text v-if="value">
             <div v-if="editMode" style="margin-top:-20px;">
-                <v-text-field label="Id" v-model="value.id"/>
+                <v-text-field label="Id" v-model="value.userId"/>
             </div>
             <div v-if="editMode" style="margin-top:-20px;">
                 <v-text-field label="Password" v-model="value.password"/>
@@ -109,7 +109,7 @@
                                     
                                 </v-list-item-title>
                                 <v-list-item-subtitle style="font-weight:500;">
-                                    Id :  {{value.id }}<br>
+                                    Id :  {{value.userId }}<br>
                                     Password :  {{value.password }}<br>
                                     Email :  {{value.email }}<br>
                                     Address :  {{value.address }}<br>
@@ -139,7 +139,7 @@
         created(){
             if(!this.value) {
                 this.value = {
-                    'id': '',
+                    'userId': '',
                     'password': '',
                     'name': '',
                     'email': '',

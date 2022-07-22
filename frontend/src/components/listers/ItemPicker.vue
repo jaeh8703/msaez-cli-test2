@@ -8,18 +8,23 @@
             >
                 <v-list-item v-for="(item, idx) in list" :key="idx">
                     <template v-slot:default="{ active }">
-                        <v-list-item-avatar color="grey darken-1"></v-list-item-avatar>
-                    
+                        <v-list-item-avatar color="grey darken-1">
+                        </v-list-item-avatar>
+                        
                         <v-list-item-content>
                             <v-list-item-title>
-                                {{idx+1 }}
                             </v-list-item-title>
                             <v-list-item-subtitle>
-                                Id :  {{item.id }} * 
-                                Price :  {{item.price }} * 
-                                Adopter :  {{item.adopter }} * 
-                                Status :  {{item.status }} * 
-                                PetId :  {{item.petId }} * 
+                                Price :  {{item.price }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Adopter :  {{item.adopter }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                Status :  {{item.status }}
+                            </v-list-item-subtitle>
+                            <v-list-item-subtitle>
+                                PetId :  {{item.petId }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
@@ -53,11 +58,11 @@
                 me.list = temp.data._embedded.items;
             }
 
-            if(me.value && typeof me.value == "object") {
+            if(me.value && typeof me.value == "object" && Object.values(me.value)[0]) {
                 var id = Object.values(me.value)[0];
-                temp = await axios.get(axios.fixUrl('/items/' + id))
-                if(temp.data) {
-                    var val = temp.data
+                var tmpValue = await axios.get(axios.fixUrl('/items/' + id))
+                if(tmpValue.data) {
+                    var val = tmpValue.data
                     me.list.forEach(function(item, idx) {
                         if(item.name == val.name) {
                             me.selected = idx
@@ -87,5 +92,4 @@
         },
     };
 </script>
-
 

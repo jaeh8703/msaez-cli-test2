@@ -71,9 +71,9 @@
                     v-if="!editMode"
                     color="deep-purple lighten-2"
                     text
-                    @click="feed"
+                    @click="feed123"
             >
-                Feed
+                Feed123
             </v-btn>
             <v-btn
                     v-if="!editMode"
@@ -100,12 +100,7 @@
                 color="error"
         >
             {{ snackbar.text }}
-            <v-btn
-                    dark
-                    flat
-                    text
-                    @click="snackbar.status = false"
-            >
+            <v-btn dark text @click="snackbar.status = false">
                 Close
             </v-btn>
         </v-snackbar>
@@ -228,7 +223,7 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async feed() {
+            async feed123() {
                 try {
                     if(!this.offline) {
                         var temp = await axios.put(axios.fixUrl(this.value._links.feed.href))
@@ -262,6 +257,21 @@
                 try {
                     if(!this.offline) {
                         var temp = await axios.put(axios.fixUrl(this.value._links.comb.href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    this.snackbar.text = e
+                }
+            },
+            async () {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links..href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }

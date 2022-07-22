@@ -33,7 +33,7 @@
         data: () => ({
         }),
         async created() {
-            if(!this.value) {
+            if(!Object.values(this.value)[0]) {
                 this.$emit('input', {});
                 this.newValue = {
                     'illName': '',
@@ -46,10 +46,10 @@
                     this.value.illName = '';
                 }
                 if(!('start' in this.value)) {
-                    this.value.start = '2022-07-21';
+                    this.value.start = '2022-07-22';
                 }
                 if(!('end' in this.value)) {
-                    this.value.end = '2022-07-21';
+                    this.value.end = '2022-07-22';
                 }
             }
         },

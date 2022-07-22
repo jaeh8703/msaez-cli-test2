@@ -40,7 +40,7 @@
             referenceValue: null,
         }),
         async created() {
-            if(!this.value) {
+            if(!Object.values(this.value)[0]) {
                 this.$emit('input', {});
                 this.newValue = {
                     'id': '',
@@ -48,10 +48,8 @@
             }
             else {
                 this.newValue = this.value;
-                var path = 'Pet';
-                path = '/' + path.toLowerCase() + 's';
-
-                var temp = await axios.get(axios.fixUrl(path + '/' +  Object.values(this.value)[0]))
+                var path = '/pets';
+                var temp = await axios.get(axios.fixUrl(path + '/' +  Object.values(this.value)[0]));
                 if(temp.data) {
                     this.referenceValue = temp.data
                 }
@@ -91,8 +89,7 @@
                 this.$emit('change', this.value);
             },
             openDialog() {
-                var path = 'Pet';
-                path = '/' + path.toLowerCase() + 's/';
+                var path = '/pets/';
 
                 if(this.editMode) {
                     this.pickerDialog = true;
@@ -103,15 +100,12 @@
             },
             async pick(val){
                 this.newValue = val;
-
-                var path = 'Pet';
-                path = '/' + path.toLowerCase() + 's';
-
-                var temp = await axios.get(axios.fixUrl(path + '/' + val.id))
+                var path = '/pets';
+                var temp = await axios.get(axios.fixUrl(path + '/' + val.id));
                 if(temp.data) {
-                    this.referenceValue = temp.data
+                    this.referenceValue = temp.data;
                 }
-                this.referenceValue.nameField = val.nameField
+                this.referenceValue.nameField = val.nameField;
             },
         }
     }

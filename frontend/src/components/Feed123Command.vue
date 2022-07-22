@@ -2,7 +2,7 @@
 
     <v-card outlined>
         <v-card-title>
-            Feed
+            Feed123
         </v-card-title>
 
         <v-card-text>
@@ -13,9 +13,9 @@
             <v-btn
                     color="deep-purple lighten-2"
                     text
-                    @click="feed"
+                    @click="feed123"
             >
-                Feed
+                Feed123
             </v-btn>
             
             <v-btn
@@ -33,7 +33,7 @@
 <script>
    
     export default {
-        name: 'FeedCommand',
+        name: 'Feed123Command',
         components:{},
         props: {},
         data: () => ({
@@ -45,8 +45,8 @@
         watch: {
         },
         methods: {
-            feed() {
-                this.$emit('feed', this.value);
+            feed123() {
+                this.$emit('feed123', this.value);
             },
             close() {
                 this.$emit('closeDialog');

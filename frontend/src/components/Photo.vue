@@ -32,7 +32,7 @@
         data: () => ({
         }),
         async created() {
-            if(!this.value) {
+            if(!Object.values(this.value)[0]) {
                 this.$emit('input', {});
                 this.newValue = {
                     'imgName': '',

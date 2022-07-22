@@ -78,12 +78,7 @@
                 color="error"
         >
             {{ snackbar.text }}
-            <v-btn
-                    dark
-                    flat
-                    text
-                    @click="snackbar.status = false"
-            >
+            <v-btn dark text @click="snackbar.status = false">
                 Close
             </v-btn>
         </v-snackbar>
